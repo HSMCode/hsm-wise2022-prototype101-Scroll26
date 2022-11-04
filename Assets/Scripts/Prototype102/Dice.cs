@@ -16,8 +16,6 @@ public class Dice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DiceValue = Random.Range(1, 7);
-        //Debug.Log(DiceValue);
 
         if (Input.GetKeyDown("space"))
         {
