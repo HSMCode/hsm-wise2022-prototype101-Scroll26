@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Roboter: {fileID: 3430524188152038717, guid: 6c2b516c2a5dc014e9ec3554cd5afefc, type: 3}
+  Win: {fileID: 0}
 --- !u!1 &6717468042576710681
 GameObject:
   m_ObjectHideFlags: 0
