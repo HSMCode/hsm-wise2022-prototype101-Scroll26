@@ -9,7 +9,16 @@ public class TriggerDecoy : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         Debug.Log(other.name + " triggered into " + gameObject.name);
-        Destroy(this.gameObject);
+
+        if (other.name == Roboter.name)
+        {
+            //when roboter collides with decoy
+            Debug.Log("Sorry, this was a decoy");
+            
+            //Destroy(gameObject);
+
+            gameObject.SetActive(false);
+        }
 
     }
 }

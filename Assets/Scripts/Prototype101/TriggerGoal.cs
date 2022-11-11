@@ -5,11 +5,12 @@ using UnityEngine;
 public class TriggerGoal : MonoBehaviour
 {
     public GameObject Roboter;
-    public AudioSource Win;
+    public AudioClip goalSFX;
+    private AudioSource WinSound;
 
     void Start() 
     {
-        Win = GetComponent<AudioSource>();
+        WinSound = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -20,7 +21,9 @@ public class TriggerGoal : MonoBehaviour
         {
             //when roboter collides with goal
             Debug.Log("Victory");
-            Win.Play();
+            
+            //WinSound.Play();
+            WinSound.PlayOneShot(goalSFX);
         }
     }
 
