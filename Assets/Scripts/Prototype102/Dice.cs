@@ -5,21 +5,15 @@ using UnityEngine;
 public class Dice : MonoBehaviour
 {
     private int DiceValue;
-    /* private int LuckyOne = 6;
-    private int LuckyTwo = 1;
-    private int LuckyThree = 3; */
 
-    public int[] luckyNumbers = {1, 3, 6};
+    public int[] luckyNumbers = {1, 25, 6, 11, 22, 33, 44, 50};
     public GameObject[] MyGameObjectArray;
-
-    // public int[] luckyNumbers = new int[3];
+    public AudioSource winSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        /* luckyNumbers[0] = 1;
-        luckyNumbers[1] = 2;
-        luckyNumbers[2] = 3; */
+        winSound = GetComponent<AudioSource>();
         
     }
 
@@ -29,7 +23,7 @@ public class Dice : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            DiceValue = Random.Range(1, 7);
+            DiceValue = Random.Range(1, 51);
             // Debug.Log(DiceValue);
     
             for(int i = 0; i < luckyNumbers.Length; i++)
@@ -38,17 +32,9 @@ public class Dice : MonoBehaviour
                 if (DiceValue == luckyNumbers[i])
                 {
                     Debug.Log("Gewonnen, deine Glückszahl war " + DiceValue);
+                    winSound.Play();
                 }
             }
-
-            /* if (DiceValue == luckyNumbers[0] || DiceValue == luckyNumbers[1] || DiceValue == luckyNumbers[2])
-            {
-                Debug.Log("Gewonnen, deine Glückszahl war " + DiceValue);
-            }
-            else
-            {
-                Debug.Log("Verloren, deine Zahl war " + DiceValue);
-            } */
         }
     }
 }

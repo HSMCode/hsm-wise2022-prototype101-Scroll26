@@ -7,10 +7,12 @@ public class TriggerGoal : MonoBehaviour
     public GameObject Roboter;
     public AudioClip goalSFX;
     private AudioSource WinSound;
+    public ParticleSystem WinParticle;
 
     void Start() 
     {
         WinSound = GetComponent<AudioSource>();
+        WinParticle = GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -24,6 +26,8 @@ public class TriggerGoal : MonoBehaviour
             
             //WinSound.Play();
             WinSound.PlayOneShot(goalSFX);
+
+            WinParticle.Play(true);
         }
     }
 
