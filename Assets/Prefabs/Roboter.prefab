@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step: 1
-  turn: 45
+  turn: 90
 --- !u!54 &2110700427712787459
 Rigidbody:
   m_ObjectHideFlags: 0

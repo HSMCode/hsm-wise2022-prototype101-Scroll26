@@ -5,7 +5,7 @@ using UnityEngine;
 public class Roboter : MonoBehaviour
 {
     public float step = 1f;
-    public float turn = 45f;
+    public float turn = 90f;
 
     // Start is called before the first frame update
     void Start()
