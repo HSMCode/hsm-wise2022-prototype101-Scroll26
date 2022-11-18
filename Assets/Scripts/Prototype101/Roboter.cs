@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Roboter : MonoBehaviour
 {
-    /* public float stepBack = 1f;
-    public float stepForward = -1f;
-    public float stepRight = 1f;
-    public float stepLeft = -1f; */
-
     public float step = 1f;
     public float turn = 45f;
 
@@ -21,8 +16,6 @@ public class Roboter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(stepRight,0,stepBack);
-
         //stepforward
         if (Input.GetKeyDown("w"))
         {

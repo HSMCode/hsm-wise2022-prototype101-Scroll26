@@ -10,9 +10,11 @@ public class TestVariable : MonoBehaviour
     public float numberThree = 1.5f;
     public string stringOne = "This is a String";
 
+
     // Start is called before the first frame update
     void Start()
     {
+        
     
        // result = numberOne + numberTwo;
        // Debug.Log("Das Resultat: " + result);

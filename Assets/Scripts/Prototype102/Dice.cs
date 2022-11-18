@@ -31,8 +31,13 @@ public class Dice : MonoBehaviour
                 // do this
                 if (DiceValue == luckyNumbers[i])
                 {
-                    Debug.Log("Gewonnen, deine Glückszahl war " + DiceValue);
+                    Debug.Log("You won!!! Your lucky number was: " + DiceValue);
                     winSound.Play();
+                    i = luckyNumbers.Length + 1;
+                }
+                else if (i == (luckyNumbers.Length-1))
+                {
+                    Debug.Log("Sorry, you lost. Your number was: " + DiceValue);
                 }
             }
         }
