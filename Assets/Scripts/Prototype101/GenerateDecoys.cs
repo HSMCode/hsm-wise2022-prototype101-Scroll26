@@ -54,7 +54,7 @@ public class GenerateDecoys : MonoBehaviour
             int decoysIndex = Random.Range(0,Decoys.Length);
 
             //generate random spawn position between the defined values
-            Vector3 spawnPosition = new Vector3(Random.Range(-spawnPositionX,spawnPositionX),0.5f,Random.Range(-spawnPositionZ,spawnPositionZ));
+            Vector3 spawnPosition = new Vector3(Mathf.Floor(Random.Range(-spawnPositionX,spawnPositionX)),0.5f,Mathf.Floor(Random.Range(-spawnPositionZ,spawnPositionZ)));
             
             //Instatiate Decoy
             Instantiate(Decoys[decoysIndex], spawnPosition, Decoys[decoysIndex].transform.rotation);
