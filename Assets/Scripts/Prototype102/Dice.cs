@@ -9,6 +9,7 @@ public class Dice : MonoBehaviour
     public int[] luckyNumbers = {1, 25, 6, 11, 22, 33, 44, 50};
     public GameObject[] MyGameObjectArray;
     public AudioSource winSound;
+    public ParticleSystem playParticlesSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +35,27 @@ public class Dice : MonoBehaviour
                     Debug.Log("You won!!! Your lucky number was: " + DiceValue);
                     winSound.Play();
                     i = luckyNumbers.Length + 1;
+
+                    PlayParticles(true);
                 }
                 else if (i == (luckyNumbers.Length-1))
                 {
                     Debug.Log("Sorry, you lost. Your number was: " + DiceValue);
+                    PlayParticles(false);
                 }
             }
         }
+    }
+
+    void PlayParticles(bool on)
+    {
+        if (on)
+        {
+            playParticlesSystem.Play();
+        }
+        else if (!on)
+        {
+            playParticlesSystem.Stop();
+        }    
     }
 }
