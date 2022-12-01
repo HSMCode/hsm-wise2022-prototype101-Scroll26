@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float turnSpeed;
     public Vector3 force;
+    private bool grounded;
 
     private Animator _playerAnim;
     private Rigidbody _playerRB;
@@ -41,11 +42,23 @@ public class PlayerController : MonoBehaviour
             _playerAnim.SetBool("Walk", false);   
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             _playerRB.AddForce(force, ForceMode.Impulse);
             _playerAnim.SetTrigger("Jump");
         }
         
+    }
+
+    private void OnTriggerEnter (Collider other)
+    {
+        //Debug.Log("Is Grounded");
+        grounded = true;
+    }
+
+    private void OnTriggerExit (Collider other)
+    {
+        //Debug.Log("Is in the Air");
+        grounded = false;
     }
 }
