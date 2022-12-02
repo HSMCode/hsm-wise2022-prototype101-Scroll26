@@ -1792,7 +1792,7 @@ CapsuleCollider:
   m_Radius: 0.6
   m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 1.9, z: 0}
+  m_Center: {x: 0, y: 1.8, z: 0}
 --- !u!114 &9201537296885649776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,6 +1809,7 @@ MonoBehaviour:
   forwardInput: 0
   speed: 15
   turnSpeed: 0
+  force: {x: 0, y: 0, z: 0}
 --- !u!1 &9201537296885649779
 GameObject:
   m_ObjectHideFlags: 0
