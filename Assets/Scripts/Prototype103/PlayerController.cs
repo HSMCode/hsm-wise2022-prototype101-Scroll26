@@ -54,11 +54,13 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Is Grounded");
         grounded = true;
+        _playerAnim.SetBool("Grounded", true);
     }
 
     private void OnTriggerExit (Collider other)
     {
         //Debug.Log("Is in the Air");
         grounded = false;
+        _playerAnim.SetBool("Grounded", false);
     }
 }
