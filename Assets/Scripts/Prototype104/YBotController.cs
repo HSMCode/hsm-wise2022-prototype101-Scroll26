@@ -16,6 +16,7 @@ public class YBotController : MonoBehaviour
     public bool isOnGround;
     public bool isJumping;
     public bool isFalling;
+    public bool isLanding;
 
     private Animator _playerAnim;
     private Rigidbody _playerRB;
@@ -69,16 +70,13 @@ public class YBotController : MonoBehaviour
 
             if(isJumping)
             {
-                _playerAnim.SetTrigger("Jump");
+                //_playerAnim.SetTrigger("Jump");
             }
         }
 
         //stop jumping when letting go space or when max jump height is reached
         if (Input.GetKeyUp(KeyCode.Space) || limit < 0)
         {
-            /* isJumping = false;
-            isFalling = true; */
-
             if (isJumping)
             {
                 isJumping = false;
@@ -90,7 +88,10 @@ public class YBotController : MonoBehaviour
                 }
             }
 
-            /* if(!isJumping)
+            /* isJumping = false;
+            isFalling = true;
+
+            if(!isJumping)
             {
                 _playerAnim.SetBool("Fall", true);
             } */
@@ -98,6 +99,13 @@ public class YBotController : MonoBehaviour
 
         //create a limit defined by player position and ground level to set max jump height
         limit = jumpHeight - gameObject.transform.position.y + yLevel;
+
+        /* if (_playerRB.velocity.y < -0.5f && isFalling)
+        {
+            isLanding = true;
+            isFalling = false;
+            _playerAnim.SetBool("Fall", false);
+        } */
     }
 
 
@@ -105,13 +113,18 @@ public class YBotController : MonoBehaviour
     {
         if(isJumping)
         {
+            //gravityModifier = 1f;
             _playerRB.AddForce(Vector3.up * force, ForceMode.Force);
+            _playerAnim.SetTrigger("Jump");
         }
 
-        /* if (isFalling || isOnGround)
+        if (isFalling)
         {
+            //gravityModifier = 25f;
             _playerRB.AddForce(Vector3.down * forceDown * _playerRB.mass);
-        } */
+        }
+
+        //_playerRB.AddForce(Physics.gravity * (gravityModifier));
     }
 
 
@@ -120,13 +133,13 @@ public class YBotController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            isLanding = false;
 
             if (isFalling)
             {
                 _playerAnim.ResetTrigger("Jump");
-                _playerAnim.SetBool("Fall", false);
                 isFalling = false;
-                
+                _playerAnim.SetBool("Fall", false);
             }
 
             //set yLevel to new y position -> New ground level
