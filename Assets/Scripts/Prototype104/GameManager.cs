@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Load Prototype103_Jump scene
+        // Load Prototype104_myJump scene
         SceneManager.LoadScene(3);
     }
 }

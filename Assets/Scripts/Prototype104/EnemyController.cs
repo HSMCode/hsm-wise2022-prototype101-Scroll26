@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public GameObject _player;
     private Rigidbody rb;
     [SerializeField] float speed;
+    public int destroyedEnemies;
 
     void Start()
     {
@@ -32,6 +33,16 @@ public class EnemyController : MonoBehaviour
             // Draws a blue line from this transform to the target
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, _player.transform.position);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) 
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+
+            destroyedEnemies = +1;
         }
     }
 }

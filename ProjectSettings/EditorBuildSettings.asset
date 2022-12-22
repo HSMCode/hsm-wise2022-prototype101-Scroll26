@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 99bb2196c374a21458421a9daeaa20a6
+  - enabled: 1
+    path: Assets/Scenes/Prototype101_Robot.unity
+    guid: 844945679a9671643a29db4a4b33db2f
+  - enabled: 1
+    path: Assets/Scenes/Prototype102_Dice.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Prototype104_myJump.unity
+    guid: 16e004ef1d1883c48a5d385ad5c44837
   m_configObjects: {}

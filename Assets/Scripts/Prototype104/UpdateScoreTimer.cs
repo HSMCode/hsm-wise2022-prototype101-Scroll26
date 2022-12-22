@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UpdateScoreTimer : MonoBehaviour
 {
@@ -55,6 +56,15 @@ public class UpdateScoreTimer : MonoBehaviour
             currentScore += addScore;
             scoreUI.text = scoreText + currentScore.ToString();            
         }
+
+        if (gameOver)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                // Get inforamtion about active scene and load/reload this scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 
 
@@ -106,6 +116,7 @@ public class UpdateScoreTimer : MonoBehaviour
         {
             _gameUI.SetActive(false);
             _gameOverUI.SetActive(true);
+            
         }
 
     }
