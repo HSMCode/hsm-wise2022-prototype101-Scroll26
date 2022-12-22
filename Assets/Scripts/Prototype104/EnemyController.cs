@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject _player;
     private Rigidbody rb;
-    public float speed;
+    [SerializeField] float speed;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        
+        // make sure to set the tag "Player" on your player character for this to work
+        _player = GameObject.FindWithTag("Player");
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
-        transform.LookAt(player.transform, Vector3.up);
-        transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
-
-        //move in direction of player
-        Vector3 direction = player.transform.position - transform.position;
-        transform.position += direction * speed * Time.deltaTime;
+        // move the enemy to the vector position of the player
+        rb.AddForce((_player.transform.position - transform.position).normalized * speed);
+        // Debug.Log("Player: " + player.transform.position + "Enemy: " + transform.position);
+    }
+    
+    
+    // For debugging we can add gizmos to help visualise depth and distance a bit better
+    void OnDrawGizmosSelected()
+    {
+        if (_player != null)
+        {
+            // Draws a blue line from this transform to the target
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, _player.transform.position);
+        }
     }
 }
