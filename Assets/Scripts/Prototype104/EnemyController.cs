@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     public GameObject _player;
     private Rigidbody rb;
     [SerializeField] float speed;
-    public int destroyedEnemies;
+    private UpdateScoreTimer _updateScoreTimerScript;
 
     void Start()
     {
@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
         
         // make sure to set the tag "Player" on your player character for this to work
         _player = GameObject.FindWithTag("Player");
+
+        _updateScoreTimerScript = GameObject.Find("UpdateScore").GetComponent<UpdateScoreTimer>();
     }
     
     void FixedUpdate()
@@ -40,9 +42,10 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            _updateScoreTimerScript.destroyedEnemies++;
 
-            destroyedEnemies = +1;
+            Destroy(this.gameObject);
+
         }
     }
 }

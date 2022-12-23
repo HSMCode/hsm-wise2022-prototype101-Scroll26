@@ -33,6 +33,9 @@ public class UpdateScoreTimer : MonoBehaviour
     private bool gameWon;
     private bool gameLost;
 
+    //variables for enemies
+    public int destroyedEnemies;
+
 
     void Start()
     {
@@ -57,13 +60,11 @@ public class UpdateScoreTimer : MonoBehaviour
             scoreUI.text = scoreText + currentScore.ToString();            
         }
 
-        if (gameOver)
+
+        if(Input.GetKeyDown(KeyCode.R) && gameOver)
         {
-            if(Input.GetKeyDown(KeyCode.R))
-            {
-                // Get inforamtion about active scene and load/reload this scene
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+            // Get inforamtion about active scene and load/reload this scene
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -98,8 +99,7 @@ public class UpdateScoreTimer : MonoBehaviour
             gameWon = true;
             gameOver = true;
 
-            resultUI.text = resultWin;
-            resultUI.color = Color.green;
+            StartCoroutine(GameOver());
         }
         // GameOver LOST
         else if(currentScore < winScore && !countingDown)
@@ -107,19 +107,37 @@ public class UpdateScoreTimer : MonoBehaviour
             gameLost = true;
             gameOver = true;
 
-            resultUI.text = resultLost;
-            resultUI.color = Color.red;
+            StartCoroutine(GameOver());
         }
 
         // Change the UI to display the GameOver screen
-        if(gameOver)
+        /* if(gameOver)
         {
             _gameUI.SetActive(false);
             _gameOverUI.SetActive(true);
             
-        }
+        } */
 
     }
 
+    //game over 
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (gameWon)
+        {
+            resultUI.text = resultWin;
+            resultUI.color = Color.green;
+        }
+        else if(gameLost)
+        {
+            resultUI.text = resultLost;
+            resultUI.color = Color.red;
+        }
+
+        _gameUI.SetActive(false);
+        _gameOverUI.SetActive(true);
+    }
 
 }

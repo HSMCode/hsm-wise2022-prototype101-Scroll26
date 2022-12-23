@@ -15,5 +15,6 @@ public class GameManager : MonoBehaviour
     {
         // Load Prototype104_myJump scene
         SceneManager.LoadScene(3);
+        Debug.Log("Test");
     }
 }
