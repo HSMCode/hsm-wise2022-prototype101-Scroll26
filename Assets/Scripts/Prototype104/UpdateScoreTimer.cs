@@ -54,11 +54,15 @@ public class UpdateScoreTimer : MonoBehaviour
     {
         CountdownTimer();
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        /* if(Input.GetKeyDown(KeyCode.Space))
         {
             currentScore += addScore;
             scoreUI.text = scoreText + currentScore.ToString();            
-        }
+        } */
+
+        currentScore = destroyedEnemies;
+        scoreUI.text = scoreText + currentScore.ToString();
+
 
 
         if(Input.GetKeyDown(KeyCode.R) && gameOver)
